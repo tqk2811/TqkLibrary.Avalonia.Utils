@@ -6,34 +6,33 @@
 		<version>1.0.0-build$buildDay$$buildIndex$</version>
 		<description>my private lib</description>
 		<authors>tqk2811</authors>
-		<projectUrl>https://github.com/tqk2811/TqkLibrary.Avalonia.Utils</projectUrl>
-		<repository type="git" url="https://github.com/tqk2811/TqkLibrary.Avalonia.Utils.git"/>
+		<projectUrl>https://github.com/tqk2811/TqkLibrary.Avalonia.ToolKit</projectUrl>
+		<repository type="git" url="https://github.com/tqk2811/TqkLibrary.Avalonia.ToolKit.git"/>
 		<license type="expression">MIT</license>
+		<readme>docs\README.md</readme>
 		<dependencies>
 			<group targetFramework="netstandard2.0">
 				<dependency id="Avalonia" version="11.3.8" />
 				<dependency id="CommunityToolkit.Mvvm" version="8.4.0" />
 				<dependency id="Svg.Controls.Skia.Avalonia" version="11.3.6.2" />
-				<dependency id="TqkLibrary.Data.Json" version="1.0.0-build20240628151114" />
 				<dependency id="TqkLibrary.Utils" version="1.0.0-build20251125201106" />
 			</group>
 			<group targetFramework="net6.0">
 				<dependency id="Avalonia" version="11.3.8" />
 				<dependency id="CommunityToolkit.Mvvm" version="8.4.0" />
 				<dependency id="Svg.Controls.Skia.Avalonia" version="11.3.6.2" />
-				<dependency id="TqkLibrary.Data.Json" version="1.0.0-build20240628151114" />
 				<dependency id="TqkLibrary.Utils" version="1.0.0-build20251125201106" />
 			</group>
 			<group targetFramework="net8.0">
 				<dependency id="Avalonia" version="11.3.8" />
 				<dependency id="CommunityToolkit.Mvvm" version="8.4.0" />
 				<dependency id="Svg.Controls.Skia.Avalonia" version="11.3.6.2" />
-				<dependency id="TqkLibrary.Data.Json" version="1.0.0-build20240628151114" />
 				<dependency id="TqkLibrary.Utils" version="1.0.0-build20251125201106" />
 			</group>
 		</dependencies>
 	</metadata>
 	<files>
+		<file src="..\README.md" target="docs\" />
 		<file src="bin\Release\**\$id$.dll" target="lib\" />
 		<file src="bin\Release\**\$id$.pdb" target="lib\" />
 		<file src="bin\Release\**\$id$.xml" target="lib\" />

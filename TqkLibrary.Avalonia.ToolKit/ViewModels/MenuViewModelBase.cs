@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Input;
 using TqkLibrary.Avalonia.ToolKit.Attributes;
 using TqkLibrary.Avalonia.ToolKit.Collections.ObservableCollections;
-using TqkLibrary.Avalonia.Utils.Commands;
+using TqkLibrary.Avalonia.ToolKit.Commands;
 using TqkLibrary.Utils;
 
 namespace TqkLibrary.Avalonia.ToolKit.ViewModels
