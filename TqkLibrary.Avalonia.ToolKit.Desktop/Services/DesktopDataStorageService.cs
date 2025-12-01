@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using TqkLibrary.Avalonia.ToolKit.Interfaces.Services;
 using TqkLibrary.Utils;
 
-partial class DesktopDataStorageService : IDataStorageService
+public class DesktopDataStorageService : IDataStorageService
 {
     readonly string _dir;
     readonly JsonSerializerSettings? _serializerSettings;
@@ -24,7 +24,7 @@ partial class DesktopDataStorageService : IDataStorageService
             key += ".json";
         string? json = await ReadFileKeyAsync(key);
         if (string.IsNullOrWhiteSpace(json)) return default!;
-        return JsonConvert.DeserializeObject<TData>(json!);
+        return JsonConvert.DeserializeObject<TData>(json!, _serializerSettings);
     }
     public virtual Task SetAsync<TData>(TData value) => SetAsync<TData>(typeof(TData).GetNameFixed(IsFullTypeName) + ".json", value);
 
@@ -35,7 +35,7 @@ partial class DesktopDataStorageService : IDataStorageService
     {
         if (!key.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
             key += ".json";
-        string value_str = JsonConvert.SerializeObject(value, Formatting.Indented);
+        string value_str = JsonConvert.SerializeObject(value, _serializerSettings);
         lock (_cache) _cache[key] = value_str;
         string filePath = Path.Combine(_dir, key);
         using StreamWriter fileStream = new StreamWriter(filePath, false);
