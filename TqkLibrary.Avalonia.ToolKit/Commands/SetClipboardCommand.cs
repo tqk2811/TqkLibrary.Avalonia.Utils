@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using TqkLibrary.Avalonia.ToolKit.Interfaces.Services;
 
@@ -24,13 +25,19 @@ namespace TqkLibrary.Avalonia.ToolKit.Commands
                 return;
 
             using var l = LockButton();
-
-            var Permission = await _clipboardService.HasPermissionAsync();
-            if (Permission.Read != true)
-                Permission = await _clipboardService.RequestPermissionAsync(new() { Write = true });
-            if (Permission.Read == true)
+            try
             {
-                await _clipboardService.SetTextAsync(text!);
+                var Permission = await _clipboardService.HasPermissionAsync();
+                if (Permission.Read != true)
+                    Permission = await _clipboardService.RequestPermissionAsync(new() { Write = true });
+                if (Permission.Read == true)
+                {
+                    await _clipboardService.SetTextAsync(text!);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"{nameof(SetClipboardCommand)} {ex.GetType().FullName}: {ex.Message}{Environment.NewLine}{ex.StackTrace}");
             }
         }
     }
