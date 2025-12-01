@@ -6,7 +6,7 @@ using TqkLibrary.Utils;
 
 namespace TqkLibrary.Avalonia.ToolKit.Collections.ObservableCollections
 {
-    public class SaveStorageObservableCollection<TData, TViewModel> : SaveObservableCollection<TData, TViewModel>
+    public class SaveStorageObservableCollection<TData, TViewModel> : SaveObservableCollection<TData, TViewModel>, IDisposable
       where TData : class
       where TViewModel : class, IViewModel<TData>
     {
@@ -28,6 +28,10 @@ namespace TqkLibrary.Avalonia.ToolKit.Collections.ObservableCollections
             this._timer.Elapsed += _timer_Elapsed;
             this.OnSave += SaveStorageObservableCollection_OnSave;
             _ = PreLoad();
+        }
+        public void Dispose()
+        {
+            _timer.Dispose();
         }
 
         List<TData>? _datas = null;
@@ -66,5 +70,6 @@ namespace TqkLibrary.Avalonia.ToolKit.Collections.ObservableCollections
                 Debug.WriteLine($"Error on {nameof(PreLoad)}: {ex.GetType().FullName}: {ex.Message}{Environment.NewLine}{ex.StackTrace}");
             }
         }
+
     }
 }
