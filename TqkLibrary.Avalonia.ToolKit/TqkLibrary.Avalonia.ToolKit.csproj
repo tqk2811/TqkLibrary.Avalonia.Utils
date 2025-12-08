@@ -14,9 +14,5 @@
 		<PackageReference Include="TqkLibrary.CompilerServices" Version="1.0.0.3" />
 		<PackageReference Include="TqkLibrary.Utils" Version="1.0.0-build20251125201106" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Services\" />
-	</ItemGroup>
 	
 </Project>
